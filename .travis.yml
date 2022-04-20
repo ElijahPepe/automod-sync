@@ -1,0 +1,14 @@
+language: python
+sudo: required
+virtualenv:
+  system_site_packages: true
+python:
+  - "2.7"
+before_install:
+  - "sudo apt-get update -q"
+deploy:
+  provider: script
+  script: "python ./deploy.py && git stash --all"
+  skip_cleanup: true
+  on:
+    branch: main
